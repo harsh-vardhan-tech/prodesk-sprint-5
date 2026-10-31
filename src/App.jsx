@@ -26,7 +26,15 @@ export default function App() {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          const sanitized = parsed.map((t, idx) => ({
+            id: t?.id || "task-" + idx + "-" + Date.now(),
+            title: t?.title || "Untitled Task",
+            priority: ["High", "Medium", "Low"].includes(t?.priority) ? t.priority : "Medium",
+            column: ["todo", "inProgress", "done"].includes(t?.column) ? t.column : "todo"
+          }));
+          return sanitized;
+        }
       }
     } catch (e) {
       return DEFAULT_TASKS;
@@ -76,11 +84,11 @@ export default function App() {
   }
 
   const filteredTasks = tasks.filter((task) => {
-    const matchesSearch = task.title
+    const matchesSearch = (task?.title || "")
       .toLowerCase()
-      .includes(searchQuery.trim().toLowerCase());
+      .includes((searchQuery || "").trim().toLowerCase());
     const matchesPriority =
-      priorityFilter === "All" || task.priority === priorityFilter;
+      priorityFilter === "All" || task?.priority === priorityFilter;
     return matchesSearch && matchesPriority;
   });
 

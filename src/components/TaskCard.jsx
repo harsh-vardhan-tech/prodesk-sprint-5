@@ -42,8 +42,9 @@ export default function TaskCard({ task, onDeleteTask, onMoveTask, onEditTask })
     setIsDragging(false);
   }
 
-  const priorityClass = "priority-" + task.priority.toLowerCase();
-  const tagClass = "tag-" + task.priority.toLowerCase();
+  const priority = task?.priority || "Medium";
+  const priorityClass = "priority-" + priority.toLowerCase();
+  const tagClass = "tag-" + priority.toLowerCase();
 
   return (
     <div
