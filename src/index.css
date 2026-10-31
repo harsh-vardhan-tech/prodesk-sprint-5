@@ -280,13 +280,13 @@ body {
   transform: scale(0.98);
 }
 .priority-high {
-  border-left-color: var(--priority-high);
+  border-color: var(--priority-high);
 }
 .priority-medium {
-  border-left-color: var(--priority-medium);
+  border-color: var(--priority-medium);
 }
 .priority-low {
-  border-left-color: var(--priority-low);
+  border-color: var(--priority-low);
 }
 .task-header {
   display: flex;
