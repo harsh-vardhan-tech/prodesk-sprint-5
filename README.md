@@ -53,3 +53,9 @@ TaskCard jsx handles draggable card inline editing priority borders and move del
 3 run npm run dev
 4 open the localhost link in browser
 5 run npm run build to create production bundle
+
+##Video
+
+
+
+https://drive.google.com/file/d/1iV0rjLN0yfzSRR-eCo8vy810_HmLenRj/view?usp=sharing
